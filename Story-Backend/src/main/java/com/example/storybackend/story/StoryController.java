@@ -1,5 +1,6 @@
 package com.example.storybackend.story;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,19 +13,14 @@ public class StoryController {
 
     private StoryService storyService;
 
+    @Autowired
+    public StoryController(StoryService storyService) {
+        this.storyService = storyService;
+    }
+
     @GetMapping
     public List<Story> getAllStories() {
 
-        return List.of(
-                new Story(
-                        1L,
-                        "LotsOfWork",
-                        "Me",
-                        "Horror",
-                        "SoMuchToDoAndSee",
-                        250,
-                        18,
-                        "ah"
-                ));
+        return storyService.getAllStories();
         }
     }
