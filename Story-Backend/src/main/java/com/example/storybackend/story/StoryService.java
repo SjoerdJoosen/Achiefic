@@ -9,14 +9,14 @@ public class StoryService {
     public List<Story> getAllStories() {
         return List.of(
                 new Story(
-                    1L,
-                    "LotsOfWork",
+                        1L,
+                        "LotsOfWork",
                         "Me",
                         "Horror",
                         "SoMuchToDoAndSee",
                         250,
                         18,
-                        "OhGollyGeethereissomuchtoseeanddo"
+                        "ah"
                 ));
     }
 }
