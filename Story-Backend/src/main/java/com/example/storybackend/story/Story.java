@@ -1,7 +1,20 @@
 package com.example.storybackend.story;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Story {
 
+    @Id
+    @SequenceGenerator(
+            name = "story_sequence",
+            sequenceName = "story_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE, generator = "story_sequence"
+    )
     private Long storyId;
     private String title;
     private String author;
@@ -10,6 +23,7 @@ public class Story {
     private Integer wordCount;
     private Integer ageRating;
     private String actualStory;
+    private Long id;
 
     public Story() {
     }
