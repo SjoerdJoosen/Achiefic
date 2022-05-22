@@ -1,26 +1,26 @@
 package com.example.storybackend.story;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "https;//localhost:3000")
 @RestController
-@RequestMapping("api/v1/story")
+@RequestMapping("api/v1")
 public class StoryController {
 
+    @Autowired
     private StoryService storyService;
 
-    @Autowired
-    public StoryController(StoryService storyService) {
-        this.storyService = storyService;
-    }
-
-    @GetMapping
+    @GetMapping("/stories")
     public List<Story> getAllStories() {
 
         return storyService.getAllStories();
-        }
     }
+
+    @PostMapping("/add")
+    public Story addStory(@RequestBody Story story) {
+        return storyService.addStory(story);
+    }
+}

@@ -39,5 +39,5 @@ public class Story {
 
     @Column(name = "actualStory")
     private String actualStory;
-    
+
 }
