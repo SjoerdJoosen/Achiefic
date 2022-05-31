@@ -1,43 +1,71 @@
 package com.example.storybackend.story;
 
-import lombok.*;
-
 import javax.persistence.*;
 
-@Getter
-@Setter
 @Entity
-@Table (name = "story")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Story {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
-    public Long storyId;
+    public int storyId;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "author")
     private String author;
 
-    @Column(name = "genre")
     private String genre;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "wordCount")
     private Integer wordCount;
 
-    @Column(name = "ageRating")
     private Integer ageRating;
 
-    @Column(name = "actualStory")
     private String actualStory;
 
+    public Story() {
+
+    }
+
+    public Story(int storyId, String title, String author, String genre, String description, Integer wordCount, Integer ageRating, String actualStory) {
+        this.storyId = storyId;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.description = description;
+        this.wordCount = wordCount;
+        this.ageRating = ageRating;
+        this.actualStory = actualStory;
+    }
+
+    public int getStoryId() {
+        return storyId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Integer getWordCount() {
+        return wordCount;
+    }
+
+    public Integer getAgeRating() {
+        return ageRating;
+    }
+
+    public String getActualStory() {
+        return actualStory;
+    }
 }
