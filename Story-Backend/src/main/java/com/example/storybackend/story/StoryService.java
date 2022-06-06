@@ -1,16 +1,17 @@
 package com.example.storybackend.story;
 
 import com.example.storybackend.exception.RequestException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class StoryService implements IStoryService {
 
+    @Autowired
     private final StoryRepository storyRepository;
 
     public StoryService(StoryRepository storyRepository) {this.storyRepository = storyRepository;}
-
 
     public List<Story> getAllStories()
     {
@@ -64,7 +65,6 @@ public class StoryService implements IStoryService {
             throw new RequestException("Cannot delete story");
         }
     }
-
     @Override
     public Story updateStory(Story story)
     {

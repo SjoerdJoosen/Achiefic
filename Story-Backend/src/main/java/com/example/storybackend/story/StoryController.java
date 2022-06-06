@@ -3,7 +3,6 @@ package com.example.storybackend.story;
 import com.example.storybackend.exception.RequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RequestMapping("api/")
@@ -29,7 +28,7 @@ public class StoryController {
 
     }
 
-    @PostMapping("/addStory")
+    @PostMapping
     public Story addStory(@RequestBody Story story)
     {
         try
@@ -43,7 +42,7 @@ public class StoryController {
         }
     }
 
-    @GetMapping(value = "/story/{id}")
+    @GetMapping(value = "{id}")
     public Story getStoryById(@PathVariable int id)
     {
         try
@@ -55,7 +54,7 @@ public class StoryController {
             throw new RequestException("Cannot get story by Id");
         }
     }
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "{id}")
     public String deleteStory(@PathVariable int id)
     {
         try
