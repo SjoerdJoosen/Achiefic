@@ -9,13 +9,9 @@ public class Story {
     @Id
     @GeneratedValue
     public int storyId;
-
     private String title;
-
     private String author;
-
     private String genre;
-
     private String description;
     private String actualStory;
     public Story() {
