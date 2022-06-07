@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@RequestMapping("api/")
-@CrossOrigin(origins = "https;//localhost:3000")
+@RequestMapping("api")
+@CrossOrigin
 @RestController
 public class StoryController {
 
@@ -28,7 +28,7 @@ public class StoryController {
 
     }
 
-    @PostMapping
+    @PostMapping("/story")
     public Story addStory(@RequestBody Story story)
     {
         try
