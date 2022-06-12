@@ -1,52 +1,32 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { Container } from '@mui/system';
+import { Paper } from '@mui/material';
 
 export default function StoryForm() {
   const [value, setValue] = React.useState('Controlled');
-
+  
+  const paperStyle = {padding: '50px 20px', width:600,margin:"20px auto"}
   const handleChange = (event) => {
     setValue(event.target.value);
+  
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
-        <TextField
-          id="outlined-textarea"
-          label="Title"
-          placeholder="Placeholder"
-        />
-        <TextField
-          id="outlined-textarea"
-          label="Author"
-          placeholder="Placeholder"
-        />
-        <TextField
-          id="outlined-textarea"
-          label="Genre"
-          placeholder="Placeholder"
-        />
-        <TextField
-          id="outlined-textarea"
-          label="Description"
-          placeholder="Placeholder"
-        />
-        <TextField
-          id="outlined-textarea"
-          label="Story"
-          placeholder="Placeholder"
-          multiline
-        />
 
-      </div>
-    </Box>
+      <Container>
+          <Paper elevation = {3} style = {paperStyle}>
+        
+        <form noValidate autoComplete= "off">
+
+          <TextField id="outlined-textarea" label="Title" variant="outlined" fullWidth/>
+          <TextField id="outlined-textarea" label="Author"variant="outlined" fullWidth/>
+          <TextField id="outlined-textarea" label="Genre"variant="outlined" fullWidth/>
+          <TextField id="outlined-textarea" label="Description"variant="outlined" fullWidth/>
+          <TextField id="outlined-textarea" label="Story" multiline variant="outlined" fullWidth/>
+
+        </form>
+        </Paper>
+      </Container>
   );
 }
