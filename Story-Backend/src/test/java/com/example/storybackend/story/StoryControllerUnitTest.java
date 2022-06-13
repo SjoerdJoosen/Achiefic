@@ -9,8 +9,10 @@ class StoryControllerUnitTest {
 
     @Test
     void getAllStories() {
+/*
         StoryService storyService = Mockito.mock(StoryService.class);
         StoryController storyController = new StoryController();
+*/
 
     }
 
