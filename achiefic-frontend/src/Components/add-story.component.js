@@ -22,9 +22,24 @@ export default class AddStory extends Component {
       title: e.target.value
     });
   }
+  onChangeAuthor(e) {
+    this.setState({
+      author: e.target.value
+    });
+  }
+  onChangeGenre(e) {
+    this.setState({
+      genre: e.target.value
+    });
+  }
   onChangeDescription(e) {
     this.setState({
       description: e.target.value
+    });
+  }
+  onChangeActualStory(e) {
+    this.setState({
+      actualStory: e.target.value
     });
   }
   saveStory() {
@@ -62,6 +77,83 @@ export default class AddStory extends Component {
     });
   }
   render() {
-    // ...
+    return (
+        <div className="submit-form">
+          {this.state.submitted ? (
+            <div>
+              <h4>You submitted successfully!</h4>
+              <button className="btn btn-success" onClick={this.newTutorial}>
+                Add Story
+              </button>
+            </div>
+          ) : (
+            <div>
+              <div className="form-group">
+                <label htmlFor="title">Title</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="title"
+                  required
+                  value={this.state.title}
+                  onChange={this.onChangeTitle}
+                  name="title"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="author">Author</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="author"
+                  required
+                  value={this.state.author}
+                  onChange={this.onChangeAuthor}
+                  name="author"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="genre">Genre</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="genre"
+                  required
+                  value={this.state.genre}
+                  onChange={this.onChangeGenre}
+                  name="genre"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Description</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="description"
+                  required
+                  value={this.state.description}
+                  onChange={this.onChangeDescription}
+                  name="description"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="actualStory">ActualStory</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="actualStory"
+                  required
+                  value={this.state.actualStory}
+                  onChange={this.onChangeActualStory}
+                  name="actualStory"
+                />
+              </div>
+              <button onClick={this.saveTutorial} className="btn btn-success">
+                Submit story
+              </button>
+            </div>
+          )}
+        </div>
+      );
+    }
   }
-}
