@@ -7,13 +7,9 @@ on:
   workflow_dispatch:
   push:
     branches: [ main ]
-    paths:
-    - 'Story-BackEnd/**'
     
   pull_request:
     branches: [ Development ]
-    paths:
-    - 'Story-BackEnd/**'
 
 jobs:
   build:
