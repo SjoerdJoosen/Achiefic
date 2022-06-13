@@ -35,6 +35,6 @@ jobs:
         image: sjoerdjoosen/story-backend-container
         tags: latest
         registry: docker.io
-        dockerfile: Dockerfile
+        dockerfile: Story-Backend/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
