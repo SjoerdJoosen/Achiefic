@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import TutorialDataService from "../services/tutorial.service";
-export default class Tutorial extends Component {
+import StoryDataService from "../services/story.service";
+
+export default class Story extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -9,6 +10,7 @@ export default class Tutorial extends Component {
     this.updatePublished = this.updatePublished.bind(this);
     this.updateStory = this.updateStory.bind(this);
     this.deleteStory = this.deleteStory.bind(this);
+    
     this.state = {
       currentStory: {
         id: null,
@@ -24,6 +26,7 @@ export default class Tutorial extends Component {
   componentDidMount() {
     this.getStory(this.props.match.params.id);
   }
+
   onChangeTitle(e) {
     const title = e.target.value;
     this.setState(function(prevState) {
@@ -35,6 +38,7 @@ export default class Tutorial extends Component {
       };
     });
   }
+
   onChangeDescription(e) {
     const description = e.target.value;
     
@@ -45,12 +49,36 @@ export default class Tutorial extends Component {
       }
     }));
   }
+
   getStory(id) {
     StoryDataService.get(id)
       .then(response => {
         this.setState({
           currentStory: response.data
         });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+  updatePublished(status) {
+    var data = {
+      id: this.state.currentStory.id,
+      title: this.state.currentStory.title,
+      description: this.state.currentStory.description,
+      published: status
+    };
+
+    StoryDataService.update(this.state.currentStory.id, data)
+      .then(response => {
+        this.setState(prevState => ({
+          currentStory: {
+            ...prevState.currentStory,
+            published: status
+          }
+        }));
         console.log(response.data);
       })
       .catch(e => {
@@ -73,6 +101,7 @@ export default class Tutorial extends Component {
         console.log(e);
       });
   }
+
   deleteStory() {    
     StoryDataService.delete(this.state.currentStory.id)
       .then(response => {
@@ -83,6 +112,7 @@ export default class Tutorial extends Component {
         console.log(e);
       });
   }
+
   render() {
     const { currentStory } = this.state;
     return (
@@ -115,7 +145,7 @@ export default class Tutorial extends Component {
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentTutorial.published ? "Published" : "Pending"}
+                {currentStory.published ? "Published" : "Pending"}
               </div>
             </form>
             {currentStory.published ? (

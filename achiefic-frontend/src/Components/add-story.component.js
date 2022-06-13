@@ -5,7 +5,10 @@ export default class AddStory extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeAuthor = this.onChangeAuthor.bind(this);
+    this.onChangeGenre = this.onChangeGenre.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeActualStory = this.onChangeActualStory.bind(this);
     this.saveStory = this.saveStory.bind(this);
     this.newStory = this.newStory.bind(this);
     this.state = {
@@ -82,7 +85,7 @@ export default class AddStory extends Component {
           {this.state.submitted ? (
             <div>
               <h4>You submitted successfully!</h4>
-              <button className="btn btn-success" onClick={this.newTutorial}>
+              <button className="btn btn-success" onClick={this.newStory}>
                 Add Story
               </button>
             </div>
@@ -148,7 +151,7 @@ export default class AddStory extends Component {
                   name="actualStory"
                 />
               </div>
-              <button onClick={this.saveTutorial} className="btn btn-success">
+              <button onClick={this.saveStory} className="btn btn-success">
                 Submit story
               </button>
             </div>
