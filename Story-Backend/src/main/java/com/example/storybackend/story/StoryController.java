@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@RequestMapping("api/stories")
+@RequestMapping("api")
 @CrossOrigin
 @RestController
 public class StoryController {
@@ -13,7 +13,7 @@ public class StoryController {
     @Autowired
     private StoryService storyService;
 
-    @GetMapping()
+    @GetMapping("/stories")
     public List<Story> getAllStories()
     {
         try
@@ -28,7 +28,7 @@ public class StoryController {
 
     }
 
-    @PostMapping()
+    @PostMapping("/stories")
     public Story addStory(@RequestBody Story story)
     {
         try
@@ -42,7 +42,7 @@ public class StoryController {
         }
     }
 
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/stories/{id}")
     public Story getStoryById(@PathVariable int id)
     {
         try
@@ -54,7 +54,7 @@ public class StoryController {
             throw new RequestException("Cannot get story by Id");
         }
     }
-    @DeleteMapping(value = "{id}")
+    @DeleteMapping(value = "stories/{id}")
     public String deleteStory(@PathVariable int id)
     {
         try
