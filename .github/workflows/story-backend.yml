@@ -8,12 +8,12 @@ on:
   push:
     branches: [ main ]
     paths:
-    - Story-BackEnd/**
+    - 'Story-BackEnd/**'
     
   pull_request:
     branches: [ Development ]
     paths:
-    - Story-BackEnd/**
+    - 'Story-BackEnd/**'
 
 jobs:
   build:
