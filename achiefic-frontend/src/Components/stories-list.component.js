@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import StoryDataService from "../services/story.service";
 import { Link } from "react-router-dom";
+import StoryDataService from "../Services/story.service";
 
 export default class StoriesList extends Component {
   constructor(props) {

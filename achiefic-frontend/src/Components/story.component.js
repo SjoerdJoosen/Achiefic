@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import StoryDataService from "../services/story.service";
+import StoryDataService from "../Services/story.service";
 
 export default class Story extends Component {
   constructor(props) {
@@ -141,6 +141,7 @@ export default class Story extends Component {
                   onChange={this.onChangeDescription}
                 />
               </div>
+              
               <div className="form-group">
                 <label>
                   <strong>Status:</strong>
@@ -148,6 +149,7 @@ export default class Story extends Component {
                 {currentStory.published ? "Published" : "Pending"}
               </div>
             </form>
+            
             {currentStory.published ? (
               <button
                 className="badge badge-primary mr-2"
@@ -169,6 +171,7 @@ export default class Story extends Component {
             >
               Delete
             </button>
+            
             <button
               type="submit"
               className="badge badge-success"
