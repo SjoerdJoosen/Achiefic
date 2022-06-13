@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@RequestMapping("api")
+@RequestMapping("api/stories")
 @CrossOrigin
 @RestController
 public class StoryController {
@@ -13,7 +13,7 @@ public class StoryController {
     @Autowired
     private StoryService storyService;
 
-    @GetMapping("/stories")
+    @GetMapping()
     public List<Story> getAllStories()
     {
         try
@@ -28,7 +28,7 @@ public class StoryController {
 
     }
 
-    @PostMapping("/story")
+    @PostMapping()
     public Story addStory(@RequestBody Story story)
     {
         try
