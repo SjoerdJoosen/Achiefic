@@ -1,38 +1,20 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import React, { Component } from "react";
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Header from './Components/header';
 import {BrowserRouter as Router} from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { render } from '@testing-library/react';
 import { FrontendRoutes } from './routes';
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
+function App() {
+  render()
+  return (
+    <Router>
+        <Header />
         <div className="App">
-          <FrontendRoutes/>
+        <FrontendRoutes/>
         </div>
-      <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/stories"} className="navbar-brand">
-            Achiefic
-          </Link>
-          <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/stories"} className="nav-link">
-                Stories
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
-                Add story
-              </Link>
-            </li>
-          </div>
-        </nav>
-      </div>
-      </Router>
-    );
-  }
+    </Router>
+  );
 }
-export default App;
+
+export default App
