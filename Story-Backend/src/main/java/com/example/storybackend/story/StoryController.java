@@ -28,7 +28,7 @@ public class StoryController {
 
     }
 
-    @PostMapping("/stories")
+    @PostMapping("/story")
     public Story addStory(@RequestBody Story story)
     {
         try

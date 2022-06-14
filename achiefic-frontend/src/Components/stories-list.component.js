@@ -115,7 +115,7 @@ export default class StoryList extends Component {
           </div>
         </div>
         <div className="col-md-6">
-          <h4>stories List</h4>
+          <h4>Stories List</h4>
 
           <ul className="list-group">
             {stories &&

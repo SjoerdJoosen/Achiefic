@@ -5,6 +5,7 @@ export default class AddStory extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeAuthor = this.onChangeAuthor.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.saveStory = this.saveStory.bind(this);
     this.newStory = this.newStory.bind(this);
@@ -12,7 +13,10 @@ export default class AddStory extends Component {
     this.state = {
       id: null,
       title: "",
-      description: "", 
+      author: "",
+      genre: "",
+      description: "",
+      actualStory: "", 
       published: false,
 
       submitted: false
@@ -25,11 +29,30 @@ export default class AddStory extends Component {
     });
   }
 
+  onChangeAuthor(e) {
+    this.setState({
+      author: e.target.value
+    });
+  }
+
+  onChangeGenre(e) {
+    this.setState({
+      genre: e.target.value
+    });
+  }
+
   onChangeDescription(e) {
     this.setState({
       description: e.target.value
     });
   }
+
+  onChangeActualStory(e) {
+    this.setState({
+      actualStory: e.target.value
+    });
+  }
+
 
   saveStory() {
     var data = {
@@ -42,7 +65,10 @@ export default class AddStory extends Component {
         this.setState({
           id: response.data.id,
           title: response.data.title,
+          author: response.data.author,
+          genre: response.data.genre,
           description: response.data.description,
+          actualStory: response.data.actualStory,
           published: response.data.published,
 
           submitted: true
@@ -58,7 +84,10 @@ export default class AddStory extends Component {
     this.setState({
       id: null,
       title: "",
+      author: "",
+      genre: "",
       description: "",
+      actualStory: "", 
       published: false,
 
       submitted: false
@@ -91,6 +120,32 @@ export default class AddStory extends Component {
             </div>
 
             <div className="form-group">
+              <label htmlFor="Author">Author</label>
+              <input
+                type="text"
+                className="form-control"
+                id="author"
+                required
+                value={this.state.author}
+                onChange={this.onChangeAuthor}
+                name="author"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="genre">Genre</label>
+              <input
+                type="text"
+                className="form-control"
+                id="genre"
+                required
+                value={this.state.genre}
+                onChange={this.onChangeGenre}
+                name="genre"
+              />
+            </div>
+
+            <div className="form-group">
               <label htmlFor="description">Description</label>
               <input
                 type="text"
@@ -100,6 +155,19 @@ export default class AddStory extends Component {
                 value={this.state.description}
                 onChange={this.onChangeDescription}
                 name="description"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="actualStory">Story</label>
+              <input
+                type="text"
+                className="form-control"
+                id="actualStory"
+                required
+                value={this.state.actualStory}
+                onChange={this.onChangeActualStory}
+                name="actualStory"
               />
             </div>
 
