@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import StoryDataService from "../Services/story.service";
+import StoryDataService from "../services/story.service";
 
 export default class Story extends Component {
   constructor(props) {
@@ -10,25 +10,25 @@ export default class Story extends Component {
     this.updatePublished = this.updatePublished.bind(this);
     this.updateStory = this.updateStory.bind(this);
     this.deleteStory = this.deleteStory.bind(this);
-    
+
     this.state = {
       currentStory: {
         id: null,
         title: "",
-        author: "",
-        genre: "",
         description: "",
-        actualStory: "",
+        published: false
       },
       message: ""
     };
   }
+
   componentDidMount() {
     this.getStory(this.props.match.params.id);
   }
 
   onChangeTitle(e) {
     const title = e.target.value;
+
     this.setState(function(prevState) {
       return {
         currentStory: {
@@ -94,7 +94,7 @@ export default class Story extends Component {
       .then(response => {
         console.log(response.data);
         this.setState({
-          message: "The story was updated successfully!"
+          message: "The Story was updated successfully!"
         });
       })
       .catch(e => {
@@ -106,7 +106,7 @@ export default class Story extends Component {
     StoryDataService.delete(this.state.currentStory.id)
       .then(response => {
         console.log(response.data);
-        this.props.history.push('/stories')
+        this.props.history.push('/Stories')
       })
       .catch(e => {
         console.log(e);
@@ -115,6 +115,7 @@ export default class Story extends Component {
 
   render() {
     const { currentStory } = this.state;
+
     return (
       <div>
         {currentStory ? (
@@ -141,7 +142,7 @@ export default class Story extends Component {
                   onChange={this.onChangeDescription}
                 />
               </div>
-              
+
               <div className="form-group">
                 <label>
                   <strong>Status:</strong>
@@ -149,7 +150,7 @@ export default class Story extends Component {
                 {currentStory.published ? "Published" : "Pending"}
               </div>
             </form>
-            
+
             {currentStory.published ? (
               <button
                 className="badge badge-primary mr-2"
@@ -165,13 +166,14 @@ export default class Story extends Component {
                 Publish
               </button>
             )}
+
             <button
               className="badge badge-danger mr-2"
               onClick={this.deleteStory}
             >
               Delete
             </button>
-            
+
             <button
               type="submit"
               className="badge badge-success"

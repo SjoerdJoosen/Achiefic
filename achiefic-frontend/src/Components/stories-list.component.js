@@ -1,19 +1,20 @@
 import React, { Component } from "react";
+import StoryDataService from "../services/story.service";
 import { Link } from "react-router-dom";
-import StoryDataService from "../Services/story.service";
 
-export default class StoriesList extends Component {
+export default class StoryList extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
     this.retrieveStories = this.retrieveStories.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveStory = this.setActiveStory.bind(this);
+    this.removeAllstories = this.removeAllstories.bind(this);
     this.searchTitle = this.searchTitle.bind(this);
-    
+
     this.state = {
       stories: [],
-      currentStory: null,
+      currentstory: null,
       currentIndex: -1,
       searchTitle: ""
     };
@@ -25,6 +26,7 @@ export default class StoriesList extends Component {
 
   onChangeSearchTitle(e) {
     const searchTitle = e.target.value;
+
     this.setState({
       searchTitle: searchTitle
     });
@@ -46,19 +48,19 @@ export default class StoriesList extends Component {
   refreshList() {
     this.retrieveStories();
     this.setState({
-      currentStory: null,
+      currentstory: null,
       currentIndex: -1
     });
   }
 
   setActiveStory(story, index) {
     this.setState({
-      currentStory: story,
+      currentstory: story,
       currentIndex: index
     });
   }
 
-    removeAllStories() {
+  removeAllstories() {
     StoryDataService.deleteAll()
       .then(response => {
         console.log(response.data);
@@ -71,9 +73,9 @@ export default class StoriesList extends Component {
 
   searchTitle() {
     this.setState({
-        currentStory: null,
-        currentIndex: -1
-      });
+      currentstory: null,
+      currentIndex: -1
+    });
 
     StoryDataService.findByTitle(this.state.searchTitle)
       .then(response => {
@@ -88,8 +90,8 @@ export default class StoriesList extends Component {
   }
 
   render() {
-    const { searchTitle, stories, currentStory, currentIndex } = this.state;
-    
+    const { searchTitle, stories, currentstory, currentIndex } = this.state;
+
     return (
       <div className="list row">
         <div className="col-md-8">
@@ -113,8 +115,8 @@ export default class StoriesList extends Component {
           </div>
         </div>
         <div className="col-md-6">
-          <h4>Story List</h4>
-          
+          <h4>stories List</h4>
+
           <ul className="list-group">
             {stories &&
               stories.map((story, index) => (
@@ -123,39 +125,46 @@ export default class StoriesList extends Component {
                     "list-group-item " +
                     (index === currentIndex ? "active" : "")
                   }
-                  onClick={() => this.setActiveStory(story, index)}
+                  onClick={() => this.setActivestory(story, index)}
                   key={index}
                 >
                   {story.title}
                 </li>
               ))}
           </ul>
+
           <button
             className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllStories}
+            onClick={this.removeAllstories}
           >
             Remove All
           </button>
-
         </div>
         <div className="col-md-6">
-          {currentStory ? (
+          {currentstory ? (
             <div>
-              <h4>Story</h4>
+              <h4>story</h4>
               <div>
                 <label>
                   <strong>Title:</strong>
                 </label>{" "}
-                {currentStory.title}
+                {currentstory.title}
               </div>
               <div>
                 <label>
                   <strong>Description:</strong>
                 </label>{" "}
-                {currentStory.description}
+                {currentstory.description}
               </div>
+              <div>
+                <label>
+                  <strong>Status:</strong>
+                </label>{" "}
+                {currentstory.published ? "Published" : "Pending"}
+              </div>
+
               <Link
-                to={"/stories/" + currentStory.id}
+                to={"/stories/" + currentstory.id}
                 className="badge badge-warning"
               >
                 Edit
@@ -164,7 +173,7 @@ export default class StoriesList extends Component {
           ) : (
             <div>
               <br />
-              <p>Please select a Story...</p>
+              <p>Please click on a story...</p>
             </div>
           )}
         </div>
