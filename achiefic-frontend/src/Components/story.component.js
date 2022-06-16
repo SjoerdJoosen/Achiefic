@@ -15,7 +15,10 @@ export default class Story extends Component {
       currentStory: {
         id: null,
         title: "",
+        author: "",
+        genre: "",
         description: "",
+        actualStory: "", 
         published: false
       },
       message: ""

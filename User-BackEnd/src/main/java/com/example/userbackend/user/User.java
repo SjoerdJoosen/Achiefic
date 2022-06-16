@@ -8,7 +8,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    public int UserId;
+    public int userId;
     private String username;
     private String email;
     private String password;
@@ -16,14 +16,14 @@ public class User {
 
     }
     public User(int userId, String username, String email, String password) {
-        UserId = userId;
+        this.userId = userId;
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
     public int getUserId() {
-        return UserId;
+        return userId;
     }
 
     public String getUsername() {

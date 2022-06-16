@@ -6,7 +6,9 @@ export default class AddStory extends Component {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeAuthor = this.onChangeAuthor.bind(this);
+    this.onChangeGenre = this.onChangeGenre.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeActualStory = this.onChangeActualStory.bind(this);
     this.saveStory = this.saveStory.bind(this);
     this.newStory = this.newStory.bind(this);
 
