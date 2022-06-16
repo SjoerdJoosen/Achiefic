@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 @SpringBootTest
 class StoryControllerUnitTest {
 
-    @Mock
+   /* @Mock
     private StoryRepository repository;
     private StoryService service;
 
@@ -64,5 +64,5 @@ class StoryControllerUnitTest {
         verify(repository).deleteById(id);
         System.out.println(repository.count());
 
-    }
+    }*/
 }
