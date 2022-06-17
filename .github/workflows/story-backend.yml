@@ -2,14 +2,15 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
 name: Java CI with Maven
-
 on:
   workflow_dispatch:
   push:
     branches: [ main ]
-    
-  pull_request:
-    branches: [ Development ]
+    paths: 
+      - Story-Backend/**
+defaults: 
+  run: 
+    working-directory: Story_Backend
 
 jobs:
   build:
@@ -26,30 +27,28 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build with Maven
-      run: mvn -B package --file Story-Backend/pom.xml
-      
     - name: Cache SonarCloud packages
       uses: actions/cache@v1
       with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
           
     - name: Cache Maven packages
       uses: actions/cache@v1
       with:
           path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/Story-Backend/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
           
     - name: Build and analyze
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: |
-           cd ./Story-BackEnd/
-           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=SjoerdJoosen_Achiefic
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=SjoerdJoosen_Achiefic
 
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
@@ -57,6 +56,6 @@ jobs:
         image: sjoerdjoosen/story-backend-container
         tags: latest
         registry: docker.io
-        dockerfile: Story-Backend/Dockerfile
+        dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
