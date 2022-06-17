@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface StoryRepository extends JpaRepository<Story, Integer> {
 
-    List<Story> findByTitle(String Title);
-    List<Story> findByGenre(String Genre);
+/*    List<Story> findByTitle(String Title);
+    List<Story> findByGenre(String Genre);*/
 
 }

@@ -3,13 +3,16 @@ package com.example.storybackend.story;
 import com.example.storybackend.exception.RequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
+@Transactional
 public class StoryService implements IStoryService {
 
     @Autowired
-    private final StoryRepository storyRepository;
+    private StoryRepository storyRepository;
 
     public StoryService(StoryRepository storyRepository) {this.storyRepository = storyRepository;}
 

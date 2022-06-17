@@ -27,10 +27,6 @@ public class Story {
         this.actualStory = actualStory;
     }
 
-    public int getStoryId() {
-        return storyId;
-    }
-
     public String getTitle() {
         return title;
     }
