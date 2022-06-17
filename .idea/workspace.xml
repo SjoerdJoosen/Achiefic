@@ -23,7 +23,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/sjoer/Documents/GitHub/Achiefic/User-BackEnd",
+    "last_opened_file_path": "C:/Users/sjoer/Documents/GitHub/Achiefic/Story-BackEnd",
     "nodejs_package_manager_path": "yarn"
   }
 }]]></component>
@@ -38,6 +38,7 @@
       <workItem from="1647266530073" duration="62000" />
       <workItem from="1647421520294" duration="28000" />
       <workItem from="1655249382868" duration="153000" />
+      <workItem from="1655403137388" duration="57000" />
     </task>
     <servers />
   </component>
