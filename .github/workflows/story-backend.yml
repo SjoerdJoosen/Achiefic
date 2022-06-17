@@ -42,7 +42,21 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/Story-Backend/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-          
+    
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with: 
+        args: >
+          -Dsonar.organization=SjoerdJoosen
+          -Dsonar.projectKey=sjoerdjoosen       
+          -Dsonar.java.binaries=Story_Backend/target/classes 
+          -Dsonar.sources=Story_Backend/src/main/java/
+#     run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=SjoerdJoosen -Dsonar.projectKey=sjoerdjoosen
+    
+    
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
