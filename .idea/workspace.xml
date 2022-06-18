@@ -20,7 +20,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,7 +50,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/sjoer/Documents/GitHub/Achiefic_Stories",
+    "last_opened_file_path": "C:/Users/sjoer/Documents/GitHub/Achiefic",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -156,6 +156,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StoryBackEndApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="Achiefic" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.storybackend.StoryBackEndApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="StoryBackEndApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Story-BackEnd" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.storybackend.StoryBackEndApplication" />
@@ -203,6 +210,7 @@
       <workItem from="1655403196966" duration="2100000" />
       <workItem from="1655455523000" duration="4854000" />
       <workItem from="1655548742637" duration="1298000" />
+      <workItem from="1655562111892" duration="73000" />
     </task>
     <servers />
   </component>
