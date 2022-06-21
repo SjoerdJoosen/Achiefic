@@ -54,7 +54,7 @@ public class StoryController {
             throw new RequestException("Cannot get story by Id");
         }
     }
-    @DeleteMapping(value = "stories/{id}")
+    @DeleteMapping(value = "/stories/{id}")
     public String deleteStory(@PathVariable int id)
     {
         try
