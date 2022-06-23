@@ -1,5 +1,7 @@
 package com.example.storybackend.story;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 public interface IStoryService {
@@ -8,5 +10,5 @@ public interface IStoryService {
     Story addStory(Story story);
     Story getStoryById (int id);
     String deleteStory (int id);
-    Story updateStory(Story story);
+    ResponseEntity<Story> updateStory(int id, Story story);
 }

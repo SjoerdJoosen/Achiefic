@@ -1,13 +1,22 @@
 package com.example.storybackend.story;
 
+import com.example.storybackend.profile.Profile;
+import lombok.*;
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
+@Builder
 @Entity
+@Data
+@AllArgsConstructor
 @Table(name = "stories")
 public class Story {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int storyId;
     private String title;
     private String author;
@@ -27,43 +36,8 @@ public class Story {
         this.actualStory = actualStory;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getActualStory() {
-        return actualStory;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setActualStory(String actualStory) {
-        this.actualStory = actualStory;
-    }
+    @ManyToOne
+    @JoinColumn(name = "profileId")
+    @JsonBackReference
+    private Profile profile;
 }

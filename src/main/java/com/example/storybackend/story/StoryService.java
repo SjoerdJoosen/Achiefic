@@ -2,8 +2,11 @@ package com.example.storybackend.story;
 
 import com.example.storybackend.exception.RequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -67,10 +70,18 @@ public class StoryService implements IStoryService {
             throw new RequestException("Cannot delete story");
         }
     }
-    @Override
-    public Story updateStory(Story story)
-    {
-        return null;
+    public ResponseEntity<Story> updateStory(@PathVariable int id, @RequestBody Story Story) {
+        Story existingStory = storyRepository.findById(id)
+                .orElseThrow(() -> new RequestException("Story does not exist"));
+
+        existingStory.setTitle(Story.getTitle());
+        existingStory.setAuthor(Story.getAuthor());
+        existingStory.setGenre(Story.getGenre());
+        existingStory.setDescription(Story.getDescription());
+        existingStory.setActualStory(Story.getActualStory());
+
+        Story updated = storyRepository.save(existingStory);
+        return ResponseEntity.ok(updated);
     }
 }
 
