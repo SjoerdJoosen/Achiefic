@@ -18,8 +18,8 @@ public class Story {
 
     }
 
-    public Story(int storyId, String title, String author, String genre, String description, String actualStory) {
-        this.storyId = storyId;
+    public Story(int StoryId, String title, String author, String genre, String description, String actualStory) {
+        this.storyId = StoryId;
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -45,5 +45,25 @@ public class Story {
 
     public String getActualStory() {
         return actualStory;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setActualStory(String actualStory) {
+        this.actualStory = actualStory;
     }
 }
